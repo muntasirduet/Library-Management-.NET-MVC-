@@ -1,0 +1,53 @@
+@model List<Book>
+
+<partial name="_Notifications"/>
+@{
+    ViewBag.Title = "Index";
+    Layout = "_Layout";
+}
+
+
+<div class="container">
+    <div class="row pt-4">
+        <div class="col-6">
+            <h1>Category List</h1>
+        </div>
+        
+        <div class="col-6 text-end">
+            <a asp-controller="Category" asp-action="Create" class="btn btn-primary">Add New Category</a>
+        </div>
+    </div>
+    
+    <table class="table">
+        <thead class="thead-dark">
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Id</th>
+            <th scope="col">Author</th>
+            <th scope="col">Title</th>
+            <th scope="col">Publication</th>
+            <th scope="col">Category</th>
+            
+            
+            
+        </tr>
+        </thead>
+        <tbody>
+        @foreach (var obj in Model)
+        {
+            <tr>
+                <th scope="row">1</th>
+                <td>@obj.Id</td>
+                <td>@obj.Author</td>
+                <td>@obj.Title</td>
+                <td>@obj.Publication</td>
+                <td>@obj.Category.Name</td>
+                <td><a asp-controller="Book" asp-action="Edit" asp-route-id="@obj.Id" class="btn btn-warning">Edit</a></td>
+                <td><a asp-controller="Category" asp-action="Delete" asp-route-id="@obj.Id" class="btn btn-danger">Delete</a></td>
+            </tr>
+        }
+        
+    
+        </tbody>
+    </table>
+</div>

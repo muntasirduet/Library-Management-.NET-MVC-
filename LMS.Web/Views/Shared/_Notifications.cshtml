@@ -1,0 +1,33 @@
+@if (TempData["success"] != null)
+{
+    <script src="https://common.olemiss.edu/_js/sweet-alert/sweet-alert.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://common.olemiss.edu/_js/sweet-alert/sweet-alert.css">
+    <script>
+    
+        swal({
+                  title: "Success!",
+                  text: "Here's my error message!",
+                  type: "success",
+                  confirmButtonText: "Cool",
+                  timer:1000
+                });
+    </script>
+    
+}
+@if (TempData["error"] != null)
+{
+    
+    <script src="https://common.olemiss.edu/_js/sweet-alert/sweet-alert.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://common.olemiss.edu/_js/sweet-alert/sweet-alert.css">
+    <script>
+    alert("ki hoise");
+
+        swal({
+          title: "Error!",
+          text: "Here's my error message!",
+          type: "error",
+          confirmButtonText: "Cool"
+        });
+    </script>
+    <h2>@TempData["error"]</h2>
+}

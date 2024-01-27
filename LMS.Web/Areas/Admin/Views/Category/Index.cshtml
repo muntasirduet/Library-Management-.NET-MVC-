@@ -1,0 +1,45 @@
+@model List<LMS.Core.Category>
+
+<partial name="_Notifications"/>
+@{
+    ViewBag.Title = "Index";
+    Layout = "_Layout";
+}
+
+
+<div class="container">
+    <div class="row pt-4">
+        <div class="col-6">
+            <h1>Category List</h1>
+        </div>
+        
+        <div class="col-6 text-end">
+            <a asp-controller="Category" asp-action="Create" class="btn btn-primary">Add New Category</a>
+        </div>
+    </div>
+    
+    <table class="table">
+        <thead class="thead-dark">
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Id</th>
+            <th scope="col">Name</th>
+            
+        </tr>
+        </thead>
+        <tbody>
+        @foreach (var obj in Model.OrderBy(u=> u.Name ))
+        {
+            <tr>
+                <th scope="row">1</th>
+                <td>@obj.Id</td>
+                <td>@obj.Name</td>
+                <td><a asp-controller="Category" asp-action="Edit" asp-route-id="@obj.Id" class="btn btn-warning">Edit</a></td>
+                <td><a asp-controller="Category" asp-action="Delete" asp-route-id="@obj.Id" class="btn btn-danger">Delete</a></td>
+            </tr>
+        }
+        
+    
+        </tbody>
+    </table>
+</div>
