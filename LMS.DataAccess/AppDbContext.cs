@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 namespace LMS.DataAccess;
 
 
-public class AppDbContext:IdentityDbContext<IdentityUser> 
+public class AppDbContext:IdentityDbContext
 {
     public AppDbContext(DbContextOptions<AppDbContext> options):base(options)
     {
@@ -17,7 +17,7 @@ public class AppDbContext:IdentityDbContext<IdentityUser>
     
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
-        base.ModelBuilder(modelBuilder);
+        base.OnModelCreating(modelBuilder);
         
         modelBuilder.Entity<Book>().HasKey(u => u.Id);
         modelBuilder.Entity<Book>().Property(u => u.Title).IsRequired().HasMaxLength(100);

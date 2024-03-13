@@ -4,7 +4,7 @@ using LMS.DataAccess.Repository;
 using LMS.Service;
 using LMS.Service.Service;
 using Microsoft.EntityFrameworkCore;
-using NuGet.Protocol.Core.Types;
+
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -12,6 +12,8 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllersWithViews();
 builder.Services.AddDbContext<AppDbContext>(option
     =>option.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+
+
 builder.Services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
 builder.Services.AddScoped<CategoryService, CategoryService>();
 builder.Services.AddScoped<BookService, BookService>();
